@@ -48,9 +48,9 @@ dr_ff_n.A_s2 <- AIPW.A_s2[, 16]
 ##########
 #DESIGN B#
 ##########
-source("F:/Users/chapo752/Dropbox/Second paper/R codes/Simulation 2/Sim2_DesB_cf.R")
-source("F:/Users/chapo752/Dropbox/Second paper/R codes/Simulation 2/Estimators_cf.R")
-source("F:/Users/chapo752/Dropbox/Second paper/R codes/Simulation 2/AIPW_mis_nl_cf.R")
+source("Simulation2_DesignB.R")
+source("RI_estimators.R")
+source("AIPW_estimators.R")
 
 N <- 500
 seed <- 2102
@@ -90,9 +90,9 @@ dr_ff_n.B_s2 <- AIPW.B_s2[, 16]
 ###########
 # Design C#
 ###########
-source("F:/Users/chapo752/Dropbox/Second paper/R codes/Simulation 2/Sim2_DesC_cf.R")
-source("F:/Users/chapo752/Dropbox/Second paper/R codes/Simulation 2/Estimators_cf.R")
-source("F:/Users/chapo752/Dropbox/Second paper/R codes/Simulation 2/AIPW_mis_nl_cf.R")
+source("Simulation2_DesignC.R")
+source("RI_estimators_cf.R")
+source("AIPW_estimators.R")
 
 N <- 500
 seed <- 2103
