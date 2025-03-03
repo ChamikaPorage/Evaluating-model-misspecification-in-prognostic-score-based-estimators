@@ -1,8 +1,9 @@
-##############
-# DESIGN C   #
-##############
+############################
+# Simulation1 : Design C   #
+############################
 #contains function with argument N=sample size and seed
 # that generates 1000 datasets of Design C, simulation 1.
+
 library(xgboost)
 library(ranger)
 library(e1071)
