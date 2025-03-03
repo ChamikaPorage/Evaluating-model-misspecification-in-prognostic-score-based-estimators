@@ -16,7 +16,7 @@ library(xgboost)
 library(dplyr)
 library(ranger)
 #read data from dfmale.csv and for_table8.csv
-datat <- read.csv(file = "F:\\Users\\chapo752\\Dropbox\\Second paper\\R codes\\Empirical analysis\\dfmale.csv")
+datat <- read.csv(file = "...\\dfmale.csv")
 
 #covariates
 X.matrix <- model.matrix(smoking ~ married.living.with.partner + birth.country + edu + race + income + army.service + bmi  + c.age + c.age2 + c.family.size, data = datat)
@@ -32,7 +32,7 @@ dat <- cbind(datat$smoking, datat$lead, dat.X)
 names(dat) <- c("smoking", "lead", LETTERS[1:26])
 
 
-#PS MODELS
+#PS models
 
 #true ps
 mod.ps <- glm(smoking ~ A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z, family = binomial, data = dat)
@@ -50,21 +50,20 @@ data1 <- subset(dat, smoking == 1)
 
 #Outcome Regression models(prognostic scores)
 
-#TRUE OR
+#True OR
 mod0 <- lm(lead ~ A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z, data = data0)
 mu0 <- predict(mod0, newdata = dat, type = "response")
 
 mod1 <- lm(lead ~ A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z, data = data1)
 mu1 <- predict(mod1, newdata = dat, type = "response")
 
-#FALSE OR
+#False OR
 
 mod0f <- lm(lead ~ B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+R+S+T+U+X+Z, data = data0)
 mu0f <- predict(mod0f, newdata = dat, type = "response")
 
 mod1f <- lm(lead ~ B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+R+S+T+U+X+Z, data = data1)
 mu1f <- predict(mod1f, newdata = dat, type = "response")
-
 
 ###Non-linear models###
 
