@@ -1,6 +1,6 @@
-##########
-#DESIGN B#
-##########
+#######################
+#Simulation1: Design B#
+#######################
 
 #contains function with argument N = sample size and seed
 # that generates 1000 datasets of Design B,  simulation 1.
