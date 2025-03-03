@@ -11,7 +11,6 @@ library(iterators)
 library(parallel)
 cl <- makePSOCKcluster(4)
 registerDoParallel(cl)
-library(xgboost)
 
 estimators <- function(data) {
   N <- nrow(data[[1]])
