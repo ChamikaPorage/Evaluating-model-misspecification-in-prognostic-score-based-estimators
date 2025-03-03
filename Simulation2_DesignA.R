@@ -1,6 +1,6 @@
-################
-# Simulation 2
-#DESIGN A 
+########################
+# Simulation 2: DESIGN A 
+########################
 #contains function with argument N= sample size and seed,  
 #generating 1000 data sets with Design A in Simulation 2
 
@@ -8,6 +8,7 @@ library(xgboost)
 library(e1071)
 library(caret)
 library(ranger)
+
 gen.data.A2 <- function(N, seed){
   set.seed(seed)
   datat2 <- list(0)
@@ -59,7 +60,6 @@ gen.data.A2 <- function(N, seed){
     y1 <- 1.5 + f * x1 + g * x3 + h * x4 + l * x12 + m * x32 + n * tr * e1 + tr * e2 + eps1
     y0 <- a * x1 + b * x3 + c * x4 + d * x12 + e * x32 +  tr * e1 + tr * e2 + eps0
     y  <- ifelse(tr == 1, y1, y0)
-    
     
     datat <- as.data.frame(cbind(x1, x2, x3, x4, x12, x22, x32, tr,e1,e2, y0, y1, y))
     colnames(datat) <- c("x1", "x2", "x3", "x4", "x12", "x22", "x32", "tr", "e1", "e2" ,"y0", "y1", "y")
