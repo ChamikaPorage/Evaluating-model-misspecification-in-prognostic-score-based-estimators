@@ -1,7 +1,7 @@
-###############
-# Simulation 2#
-###############
-#DESIGN C
+#########################
+# Simulation 2: Design C#
+#########################
+
 #contains function with argument N= sample size and seed,  
 #generating 1000 data sets with Design C in Simulation 2
 library(xgboost)
@@ -74,31 +74,29 @@ gen.data.C2 <- function(N, seed){
     datat0 <- subset(datat, datat$tr == 0)
     datat1 <- subset(datat, datat$tr == 1)
     
-    # TRUE PS MODELS
+    # True PS model
     mod.ps <- glm(tr ~ x1 + x2 + x3 + x12 + x22 + e1 + e2, family = binomial, data = datat)
     ps <- fitted.values(mod.ps, type = "response") 
     datat$ps <- ps
     
-    # FALSE PS MODEL
+    # False PS model
     # Tansformation and removed covariate
     mod.psf1 <- glm(tr ~ X.sum1 + e1 , family = binomial, data = datat)
     psf1 <- fitted.values(mod.psf1, type="response") 
     datat$psf1 <- psf1
-    
-    # OR MODELS
-    
+  
     datat0 <- subset(datat, datat$tr == 0)
     datat1 <- subset(datat, datat$tr == 1)
     
-    #TRUE OR
+    #True OR model
     mod0 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2, data = datat0)
     mu0 <- predict(mod0, newdata = datat, type = "response")
     
     mod1 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2, data = datat1)
     mu1 <- predict(mod1, newdata = datat, type = "response")
     
-    # FALSE OR
-    # Tansformation and removed covariate
+    # False OR model
+    # Transformation and removed covariate
     mod0f <- lm(y ~ X.sum2 + e1, data = datat0)
     mu0f <- predict(mod0f, newdata = datat, type = "response")
     
@@ -112,8 +110,8 @@ gen.data.C2 <- function(N, seed){
     murf0 <- murf1 <- murf0_f <- murf1_f <-rep(NA, nrow(datat)) 
  
     for (k in 1:5) {
-      train_idx <- unlist(folds[-k])  # Use all folds except k for training
-      valid_idx <- folds[[k]]        # Hold out fold k for validation
+      train_idx <- unlist(folds[-k])  
+      valid_idx <- folds[[k]]        
       
       train_data <- datat[train_idx, ]
       valid_data <- datat[valid_idx, ]
