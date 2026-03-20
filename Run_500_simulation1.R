@@ -39,9 +39,7 @@ mat_nn_fpgs_f.A <- match.A[, 8]
 ##########
 #DESIGN B#
 ##########
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 1/Sim1_DesB_cf.R")
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 1/Estimators_cf.R")
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 1/matching_estimators.R")
+source("..../Simulation 1/Sim1_DesB_cf.R")
 
 N <- 500
 seed <- 2025
@@ -72,9 +70,7 @@ mat_nn_fpgs_f.B <- match.B[, 8]
 ###########
 # Design C#
 ###########
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 1/Sim1_DesC_cf.R")
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 1/Estimators_cf.R")
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 1/matching_estimators.R")
+source("..../Simulation 1/Sim1_DesC_cf.R")
 
 N <- 500
 seed <- 2025
