@@ -6,15 +6,16 @@
 #DESIGN A#
 ##########
 
-source("Simulation1_DesignA.R")
-source("RI_estimators.R")
-source("AIPW_estimators.R")
+source("..../Simulation 1/Sim1_DesA_cf.R")
+source("..../Simulation 1/Estimators_cf.R")
+source("..../Simulation 1/matching_estimators.R")
+
 
 N <- 3000
-seed <- 4001
-datat <- gen.data.A(N,  seed)
+seed <- 2025
+simA3 <- gen.data.A(N,  seed)
 
-estim.A3 <- estimators(datat)
+estim.A3 <- estimators(simA3)
 
 ri_pgt.A3 <- estim.A3[, 1]
 ri_pgf.A3 <- estim.A3[, 2]
@@ -25,37 +26,27 @@ ri_fpgf.A3 <- estim.A3[, 6]
 rf_fpgt.A3 <- estim.A3[, 7]
 rf_fpgf.A3 <- estim.A3[, 8]
 
-AIPW.A3 <- estimators_aipw(datat)
+match.A3 <- matching_estimators(simA3)
 
-dr_pt.A3 <- AIPW.A3[, 1]
-dr_p_tp.A3 <- AIPW.A3[, 2]
-dr_p_to.A3 <- AIPW.A3[, 3]
-dr_pf.A3 <- AIPW.A3[, 4]
-dr_pt_n.A3 <- AIPW.A3[, 5]
-dr_p_tp_n.A3 <- AIPW.A3[, 6]
-dr_p_to_n.A3 <- AIPW.A3[, 7]
-dr_pf_n.A3 <- AIPW.A3[, 8]
-dr_ft.A3 <- AIPW.A3[, 9]
-dr_f_tp.A3 <- AIPW.A3[, 10]
-dr_f_to.A3 <- AIPW.A3[, 11]
-dr_ff.A3 <- AIPW.A3[, 12]
-dr_ft_n.A3 <- AIPW.A3[, 13]
-dr_f_tp_n.A3 <- AIPW.A3[, 14]
-dr_f_to_n.A3 <- AIPW.A3[, 15]
-dr_ff_n.A3 <- AIPW.A3[, 16]
+mat_lin_pgs_t.A3 <- match.A3[, 1]
+mat_lin_pgs_f.A3 <- match.A3[, 2]
+mat_nn_pgs_t.A3 <- match.A3[, 3]
+mat_nn_pgs_f.A3 <- match.A3[, 4]
+mat_lin_fpgs_t.A3 <- match.A3[, 5]
+mat_lin_fpgs_f.A3 <- match.A3[, 6]
+mat_nn_fpgs_t.A3 <- match.A3[, 7]
+mat_nn_fpgs_f.A3 <- match.A3[, 8]
 
 ##########
 #DESIGN B#
 ##########
-source("Simulation1_DesignB.R")
-source("RI_estimators.R")
-source("AIPW_estimators.R")
+source("..../Simulation 1/Sim1_DesB_cf.R")
 
 N <- 3000
-seed <- 4002
-datat <- gen.data.B(N,  seed)
+seed <- 2025
+simB3 <- gen.data.B(N,  seed)
 
-estim.B3 <- estimators(datat)
+estim.B3 <- estimators(simB3)
 
 ri_pgt.B3 <- estim.B3[, 1]
 ri_pgf.B3 <- estim.B3[, 2]
@@ -66,37 +57,27 @@ ri_fpgf.B3 <- estim.B3[, 6]
 rf_fpgt.B3 <- estim.B3[, 7]
 rf_fpgf.B3 <- estim.B3[, 8]
 
-AIPW.B3 <- estimators_aipw(datat)
+match.B3 <- matching_estimators(simB3)
 
-dr_pt.B3 <- AIPW.B3[, 1]
-dr_p_tp.B3 <- AIPW.B3[, 2]
-dr_p_to.B3 <- AIPW.B3[, 3]
-dr_pf.B3 <- AIPW.B3[, 4]
-dr_pt_n.B3 <- AIPW.B3[, 5]
-dr_p_tp_n.B3 <- AIPW.B3[, 6]
-dr_p_to_n.B3 <- AIPW.B3[, 7]
-dr_pf_n.B3 <- AIPW.B3[, 8]
-dr_ft.B3 <- AIPW.B3[, 9]
-dr_f_tp.B3 <- AIPW.B3[, 10]
-dr_f_to.B3 <- AIPW.B3[, 11]
-dr_ff.B3 <- AIPW.B3[, 12]
-dr_ft_n.B3 <- AIPW.B3[, 13]
-dr_f_tp_n.B3 <- AIPW.B3[, 14]
-dr_f_to_n.B3 <- AIPW.B3[, 15]
-dr_ff_n.B3 <- AIPW.B3[, 16]
+mat_lin_pgs_t.B3 <- match.B3[, 1]
+mat_lin_pgs_f.B3 <- match.B3[, 2]
+mat_nn_pgs_t.B3 <- match.B3[, 3]
+mat_nn_pgs_f.B3 <- match.B3[, 4]
+mat_lin_fpgs_t.B3 <- match.B3[, 5]
+mat_lin_fpgs_f.B3 <- match.B3[, 6]
+mat_nn_fpgs_t.B3 <- match.B3[, 7]
+mat_nn_fpgs_f.B3 <- match.B3[, 8]
 
 ###########
 # Design C#
 ###########
-source("Simulation1_DesignC.R")
-source("RI_estimators.R")
-source("AIPW_estimators.R")
+source("..../Simulation 1/Sim1_DesC_cf.R")
 
 N <- 3000
-seed <- 4003
-datat <- gen.data.C(N,  seed)
+seed <- 2025
+simC3 <- gen.data.C(N,  seed)
 
-estim.C3 <- estimators(datat)
+estim.C3 <- estimators(simC3)
 
 ri_pgt.C3 <- estim.C3[, 1]
 ri_pgf.C3 <- estim.C3[, 2]
@@ -107,24 +88,16 @@ ri_fpgf.C3 <- estim.C3[, 6]
 rf_fpgt.C3 <- estim.C3[, 7]
 rf_fpgf.C3 <- estim.C3[, 8]
 
-AIPW.C3 <- estimators_aipw(datat)
+match.C3 <- matching_estimators(simC3)
 
-dr_pt.C3 <- AIPW.C3[, 1]
-dr_p_tp.C3 <- AIPW.C3[, 2]
-dr_p_to.C3 <- AIPW.C3[, 3]
-dr_pf.C3 <- AIPW.C3[, 4]
-dr_pt_n.C3 <- AIPW.C3[, 5]
-dr_p_tp_n.C3 <- AIPW.C3[, 6]
-dr_p_to_n.C3 <- AIPW.C3[, 7]
-dr_pf_n.C3 <- AIPW.C3[, 8]
-dr_ft.C3 <- AIPW.C3[, 9]
-dr_f_tp.C3 <- AIPW.C3[, 10]
-dr_f_to.C3 <- AIPW.C3[, 11]
-dr_ff.C3 <- AIPW.C3[, 12]
-dr_ft_n.C3 <- AIPW.C3[, 13]
-dr_f_tp_n.C3 <- AIPW.C3[, 14]
-dr_f_to_n.C3 <- AIPW.C3[, 15]
-dr_ff_n.C3 <- AIPW.C3[, 16]
+mat_lin_pgs_t.C3 <- match.C3[, 1]
+mat_lin_pgs_f.C3 <- match.C3[, 2]
+mat_nn_pgs_t.C3 <- match.C3[, 3]
+mat_nn_pgs_f.C3 <- match.C3[, 4]
+mat_lin_fpgs_t.C3 <- match.C3[, 5]
+mat_lin_fpgs_f.C3 <- match.C3[, 6]
+mat_nn_fpgs_t.C3 <- match.C3[, 7]
+mat_nn_fpgs_f.C3 <- match.C3[, 8]
 
 # Prepare the results for latex table
 
@@ -176,64 +149,39 @@ False.C3 <- round(cbind(
   digits = 3
 )
 
-AIPW.A3 <- round(cbind(
-  mean(dr_pt.A3) - 3, sd(dr_pt.A3), mean((dr_pt.A3 - 3)^2),
-  mean(dr_p_tp.A3) - 3, sd(dr_p_tp.A3), mean((dr_p_tp.A3 - 3)^2), 
-  mean(dr_p_to.A3) - 3, sd(dr_p_to.A3), mean((dr_p_to.A3 - 3)^2),
-  mean(dr_pf.A3) - 3, sd(dr_pf.A3), mean((dr_pf.A3 - 3)^2),
-  mean(dr_pt_n.A3) - 3, sd(dr_pt_n.A3), mean((dr_pt_n.A3 - 3)^2),
-  mean(dr_p_tp_n.A3) - 3, sd(dr_p_tp_n.A3), mean((dr_p_tp_n.A3 - 3)^2), 
-  mean(dr_p_to_n.A3) - 3, sd(dr_p_to_n.A3), mean((dr_p_to_n.A3 - 3)^2),
-  mean(dr_pf_n.A3) - 3, sd(dr_pf_n.A3), mean((dr_pf_n.A3 - 3)^2),
-  mean(dr_ft.A3) - 3, sd(dr_ft.A3), mean((dr_ft.A3 - 3)^2),
-  mean(dr_f_tp.A3) - 3, sd(dr_f_tp.A3), mean((dr_f_tp.A3 - 3)^2), 
-  mean(dr_f_to.A3) - 3, sd(dr_f_to.A3), mean((dr_f_to.A3 - 3)^2),
-  mean(dr_ff.A3) - 3, sd(dr_ff.A3), mean((dr_ff.A3 - 3)^2),
-  mean(dr_ft_n.A3) - 3, sd(dr_ft_n.A3), mean((dr_ft_n.A3 - 3)^2),
-  mean(dr_f_tp_n.A3) - 3, sd(dr_f_tp_n.A3), mean((dr_f_tp_n.A3 - 3)^2), 
-  mean(dr_f_to_n.A3) - 3, sd(dr_f_to_n.A3), mean((dr_f_to_n.A3 - 3)^2),
-  mean(dr_ff_n.A3) - 3, sd(dr_ff_n.A3), mean((dr_ff_n.A3 - 3)^2)),
+
+MAT.A3 <- round(cbind(
+  mean(mat_lin_pgs_t.A3) - 3, sd(mat_lin_pgs_t.A3), mean((mat_lin_pgs_t.A3 - 3)^2),
+  mean(mat_lin_pgs_f.A3) - 3, sd(mat_lin_pgs_f.A3), mean((mat_lin_pgs_f.A3 - 3)^2), 
+  mean(mat_nn_pgs_t.A3) - 3, sd(mat_nn_pgs_t.A3), mean((mat_nn_pgs_t.A3 - 3)^2),
+  mean(mat_nn_pgs_f.A3) - 3, sd(mat_nn_pgs_f.A3), mean((mat_nn_pgs_f.A3 - 3)^2),
+  mean(mat_lin_fpgs_t.A3) - 3, sd(mat_lin_fpgs_t.A3), mean((mat_lin_fpgs_t.A3 - 3)^2),
+  mean(mat_lin_fpgs_f.A3) - 3, sd(mat_lin_fpgs_f.A3), mean((mat_lin_fpgs_f.A3 - 3)^2), 
+  mean(mat_nn_fpgs_t.A3) - 3, sd(mat_nn_fpgs_t.A3), mean((mat_nn_fpgs_t.A3 - 3)^2),
+  mean(mat_nn_fpgs_f.A3) - 3, sd(mat_nn_fpgs_f.A3), mean((mat_nn_fpgs_f.A3 - 3)^2)),
   digits = 3
 )
 
-AIPW.B3 <- round(cbind(
-  mean(dr_pt.B3) - 3, sd(dr_pt.B3), mean((dr_pt.B3 - 3)^2),
-  mean(dr_p_tp.B3) - 3, sd(dr_p_tp.B3), mean((dr_p_tp.B3 - 3)^2), 
-  mean(dr_p_to.B3) - 3, sd(dr_p_to.B3), mean((dr_p_to.B3 - 3)^2),
-  mean(dr_pf.B3) - 3, sd(dr_pf.B3), mean((dr_pf.B3 - 3)^2),
-  mean(dr_pt_n.B3) - 3, sd(dr_pt_n.B3), mean((dr_pt_n.B3 - 3)^2),
-  mean(dr_p_tp_n.B3) - 3, sd(dr_p_tp_n.B3), mean((dr_p_tp_n.B3 - 3)^2), 
-  mean(dr_p_to_n.B3) - 3, sd(dr_p_to_n.B3), mean((dr_p_to_n.B3 - 3)^2),
-  mean(dr_pf_n.B3) - 3, sd(dr_pf_n.B3), mean((dr_pf_n.B3 - 3)^2),
-  mean(dr_ft.B3) - 3, sd(dr_ft.B3), mean((dr_ft.B3 - 3)^2),
-  mean(dr_f_tp.B3) - 3, sd(dr_f_tp.B3), mean((dr_f_tp.B3 - 3)^2), 
-  mean(dr_f_to.B3) - 3, sd(dr_f_to.B3), mean((dr_f_to.B3 - 3)^2),
-  mean(dr_ff.B3) - 3, sd(dr_ff.B3), mean((dr_ff.B3 - 3)^2),
-  mean(dr_ft_n.B3) - 3, sd(dr_ft_n.B3), mean((dr_ft_n.B3 - 3)^2),
-  mean(dr_f_tp_n.B3) - 3, sd(dr_f_tp_n.B3), mean((dr_f_tp_n.B3 - 3)^2), 
-  mean(dr_f_to_n.B3) - 3, sd(dr_f_to_n.B3), mean((dr_f_to_n.B3 - 3)^2),
-  mean(dr_ff_n.B3) - 3, sd(dr_ff_n.B3), mean((dr_ff_n.B3 - 3)^2)),
+MAT.B3 <- round(cbind(
+  mean(mat_lin_pgs_t.B3) - 3, sd(mat_lin_pgs_t.B3), mean((mat_lin_pgs_t.B3 - 3)^2),
+  mean(mat_lin_pgs_f.B3) - 3, sd(mat_lin_pgs_f.B3), mean((mat_lin_pgs_f.B3 - 3)^2), 
+  mean(mat_nn_pgs_t.B3) - 3, sd(mat_nn_pgs_t.B3), mean((mat_nn_pgs_t.B3 - 3)^2),
+  mean(mat_nn_pgs_f.B3) - 3, sd(mat_nn_pgs_f.B3), mean((mat_nn_pgs_f.B3 - 3)^2),
+  mean(mat_lin_fpgs_t.B3) - 3, sd(mat_lin_fpgs_t.B3), mean((mat_lin_fpgs_t.B3 - 3)^2),
+  mean(mat_lin_fpgs_f.B3) - 3, sd(mat_lin_fpgs_f.B3), mean((mat_lin_fpgs_f.B3 - 3)^2), 
+  mean(mat_nn_fpgs_t.B3) - 3, sd(mat_nn_fpgs_t.B3), mean((mat_nn_fpgs_t.B3 - 3)^2),
+  mean(mat_nn_fpgs_f.B3) - 3, sd(mat_nn_fpgs_f.B3), mean((mat_nn_fpgs_f.B3 - 3)^2)),
   digits = 3
 )
 
-
-AIPW.C3 <- round(cbind(
-  mean(dr_pt.C3) - 3, sd(dr_pt.C3), mean((dr_pt.C3 - 3)^2),
-  mean(dr_p_tp.C3) - 3, sd(dr_p_tp.C3), mean((dr_p_tp.C3 - 3)^2), 
-  mean(dr_p_to.C3) - 3, sd(dr_p_to.C3), mean((dr_p_to.C3 - 3)^2),
-  mean(dr_pf.C3) - 3, sd(dr_pf.C3), mean((dr_pf.C3 - 3)^2),
-  mean(dr_pt_n.C3) - 3, sd(dr_pt_n.C3), mean((dr_pt_n.C3 - 3)^2),
-  mean(dr_p_tp_n.C3) - 3, sd(dr_p_tp_n.C3), mean((dr_p_tp_n.C3 - 3)^2), 
-  mean(dr_p_to_n.C3) - 3, sd(dr_p_to_n.C3), mean((dr_p_to_n.C3 - 3)^2),
-  mean(dr_pf_n.C3) - 3, sd(dr_pf_n.C3), mean((dr_pf_n.C3 - 3)^2),
-  mean(dr_ft.C3) - 3, sd(dr_ft.C3), mean((dr_ft.C3 - 3)^2),
-  mean(dr_f_tp.C3) - 3, sd(dr_f_tp.C3), mean((dr_f_tp.C3 - 3)^2), 
-  mean(dr_f_to.C3) - 3, sd(dr_f_to.C3), mean((dr_f_to.C3 - 3)^2),
-  mean(dr_ff.C3) - 3, sd(dr_ff.C3), mean((dr_ff.C3 - 3)^2),
-  mean(dr_ft_n.C3) - 3, sd(dr_ft_n.C3), mean((dr_ft_n.C3 - 3)^2),
-  mean(dr_f_tp_n.C3) - 3, sd(dr_f_tp_n.C3), mean((dr_f_tp_n.C3 - 3)^2), 
-  mean(dr_f_to_n.C3) - 3, sd(dr_f_to_n.C3), mean((dr_f_to_n.C3 - 3)^2),
-  mean(dr_ff_n.C3) - 3, sd(dr_ff_n.C3), mean((dr_ff_n.C3 - 3)^2)),
+MAT.C3 <- round(cbind(
+  mean(mat_lin_pgs_t.C3) - 3, sd(mat_lin_pgs_t.C3), mean((mat_lin_pgs_t.C3 - 3)^2),
+  mean(mat_lin_pgs_f.C3) - 3, sd(mat_lin_pgs_f.C3), mean((mat_lin_pgs_f.C3 - 3)^2), 
+  mean(mat_nn_pgs_t.C3) - 3, sd(mat_nn_pgs_t.C3), mean((mat_nn_pgs_t.C3 - 3)^2),
+  mean(mat_nn_pgs_f.C3) - 3, sd(mat_nn_pgs_f.C3), mean((mat_nn_pgs_f.C3 - 3)^2),
+  mean(mat_lin_fpgs_t.C3) - 3, sd(mat_lin_fpgs_t.C3), mean((mat_lin_fpgs_t.C3 - 3)^2),
+  mean(mat_lin_fpgs_f.C3) - 3, sd(mat_lin_fpgs_f.C3), mean((mat_lin_fpgs_f.C3 - 3)^2), 
+  mean(mat_nn_fpgs_t.C3) - 3, sd(mat_nn_fpgs_t.C3), mean((mat_nn_fpgs_t.C3 - 3)^2),
+  mean(mat_nn_fpgs_f.C3) - 3, sd(mat_nn_fpgs_f.C3), mean((mat_nn_fpgs_f.C3 - 3)^2)),
   digits = 3
 )
-
