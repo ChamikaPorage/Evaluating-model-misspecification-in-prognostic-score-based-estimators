@@ -125,5 +125,4 @@ gen.data.A2 <- function(N, seed){
   }
   return(datat2)
 }
-  return(datat2)
-}
+  
