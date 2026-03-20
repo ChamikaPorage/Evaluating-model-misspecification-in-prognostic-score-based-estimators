@@ -4,11 +4,8 @@
 #contains function with argument N= sample size and seed,  
 #generating 1000 data sets with Design A in Simulation 2
 
-library(xgboost)
-library(e1071)
 library(caret)
 library(ranger)
-
 gen.data.A2 <- function(N, seed){
   set.seed(seed)
   datat2 <- list(0)
@@ -57,41 +54,31 @@ gen.data.A2 <- function(N, seed){
     
     eps1 <- rnorm(N)
     eps0 <- rnorm(N)
-    y1 <- 1.5 + f * x1 + g * x3 + h * x4 + l * x12 + m * x32 + n * tr * e1 + tr * e2 + eps1
-    y0 <- a * x1 + b * x3 + c * x4 + d * x12 + e * x32 +  tr * e1 + tr * e2 + eps0
+    y1 <- 1.5 + f * x1 + g * x3 + h * x4 + l * x12 + m * x32 + n* e1 + e2 + eps1
+    y0 <- a * x1 + b * x3 + c * x4 + d * x12 + e * x32  + eps0
     y  <- ifelse(tr == 1, y1, y0)
+    
     
     datat <- as.data.frame(cbind(x1, x2, x3, x4, x12, x22, x32, tr,e1,e2, y0, y1, y))
     colnames(datat) <- c("x1", "x2", "x3", "x4", "x12", "x22", "x32", "tr", "e1", "e2" ,"y0", "y1", "y")
     
-    datat0 <- subset(datat, datat$tr == 0)
-    datat1 <- subset(datat, datat$tr == 1)
-    
-    # TRUE PS MODELS
-    mod.ps <- glm(tr ~ x1 + x2 + x3 + x12 + x22 + e1 + e2, family = binomial, data = datat)
-    ps <- fitted.values(mod.ps, type = "response") 
-    datat$ps <- ps
-    mod.psf1 <- glm(tr ~ x1 + x2 + x3 + e1, family = binomial, data = datat)
-    psf1 <- fitted.values(mod.psf1, type = "response") 
-    datat$psf1 <- psf1
-    
-    # OR MODELS
+    # OR Models
     
     datat0 <- subset(datat, datat$tr==0)
     datat1 <- subset(datat, datat$tr==1)
     
-    #TRUE OR
+    #True OR
     mod0 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2, data=datat0)
     mu0 <- predict(mod0, newdata = datat, type = "response")
     
     mod1 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2 , data = datat1)
     mu1 <- predict(mod1, newdata = datat, type = "response")
     
-    # FALSE OR
-    mod0f <- lm(y ~ x1 + x3 + x4 + e1 , data = datat0)
+    # False OR
+    mod0f <- lm(y ~ x1 + x3 + x4 + e1 + e2 , data = datat0)
     mu0f <- predict(mod0f, newdata = datat, type = "response")
     
-    mod1f <- lm(y ~ x1 + x3 + x4 + e1 , data = datat1)
+    mod1f <- lm(y ~ x1 + x3 + x4 + e1 + e2 , data = datat1)
     mu1f <- predict(mod1f, newdata = datat, type = "response")
     
     ###Non-linear model
@@ -124,27 +111,19 @@ gen.data.A2 <- function(N, seed){
       #Fasle non-linear model
       
       # Train random forest on untreated (Tr == 0)
-      mod_rf_0 <- ranger(y ~ x1  + x2 + x4 + e1 , data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
-      murf0_f[valid_idx] <- predict(mod_rf_0, data = valid_data[, c("x1", "x2", "x4", "e1")])$predictions
+      mod_rf_0 <- ranger(y ~ x1  + x2 + x4 + e1 + e2, data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
+      murf0_f[valid_idx] <- predict(mod_rf_0, data = valid_data[, c("x1", "x2", "x4", "e1", "e2")])$predictions
       
       # Train random forest on treated (Tr == 1)
-      mod_rf_1 <- ranger(y ~ x1  + x2 + x4 + e1, data = data1_train, num.trees = 300, mtry = 2, min.node.size = 5)
-      murf1_f[valid_idx] <- predict(mod_rf_1, data = valid_data[, c("x1", "x2", "x4", "e1")])$predictions
+      mod_rf_1 <- ranger(y ~ x1  + x2 + x4 + e1 + e2, data = data1_train, num.trees = 300, mtry = 2, min.node.size = 5)
+      murf1_f[valid_idx] <- predict(mod_rf_1, data = valid_data[, c("x1", "x2", "x4", "e1", "e2")])$predictions
       
     }
     
-    mu02 <- mu0^2
-    mu12 <- mu1^2
-    mu01 <- mu0*mu1
-    mu0f2 <- mu0f^2
-    mu1f2 <- mu1f^2
-    muf01 <- mu0f*mu1f
-    murf02 <- murf0^2
-    murf12 <- murf1^2
-    murf10 <- murf0*murf1
-    
-    datat2[[i]] <- as.data.frame(cbind(tr, y, ps, psf1, mu0, mu1, mu0f, mu1f, mu02, mu12, mu01, mu0f2, mu1f2, muf01, murf0, murf1,  murf0_f, murf1_f, murf02, murf12, murf10))
-    colnames(datat2[[i]]) <- c("tr", "y" ,"ps", "psf1" ,"mu0", "mu1", "mu0f", "mu1f","mu02", "mu12", "mu01", "mu0f2", "mu1f2", "muf01", "murf0", "murf1", "murf0_f", "murf1_f", "murf02", "murf12", "murf10")
+    datat2[[i]] <- data.frame(tr, y, mu0, mu1, mu0f, mu1f, murf0, murf1, murf0_f, murf1_f)
+    colnames(datat2[[i]]) <- c("tr", "y", "mu0", "mu1", "mu0f", "mu1f", "murf0", "murf1", "murf0_f", "murf1_f")
   }
+  return(datat2)
+}
   return(datat2)
 }
