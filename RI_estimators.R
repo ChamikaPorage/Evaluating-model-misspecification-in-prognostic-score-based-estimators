@@ -1,16 +1,10 @@
 ##############################
-# RI ESTIMATORS		             #
+# RI ESTIMATORS		           #
 ##############################
-
 #contains function with argument data 
-#that returns the eight pgs - estimators
+#that returns the two pgs - estimators
 #under true and misspecified models
-library(doParallel)
-library(foreach)
-library(iterators)
-library(parallel)
-cl <- makePSOCKcluster(4)
-registerDoParallel(cl)
+library(ranger)
 
 estimators <- function(data) {
   N <- nrow(data[[1]])
@@ -29,7 +23,7 @@ estimators <- function(data) {
     if (!is.data.frame(datat)) {
       datat <- as.data.frame(datat)
     }
-    colnames(datat) <- c("tr", "y" ,"ps", "psf1" ,"mu0", "mu1", "mu0f", "mu1f","mu02", "mu12", "mu01", "mu0f2", "mu1f2", "muf01", "murf0", "murf1", "murf0_f", "murf1_f", "murf02", "murf12", "murf10")
+    colnames(datat) <- c("tr","y", "mu0", "mu1", "mu0f", "mu1f", "murf0", "murf1", "murf0_f", "murf1_f")
     
     ri_pgt[i] <- (1 / N) * sum(datat$mu1) - (1 / N) * sum(datat$mu0)
     ri_pgf[i] <- (1 / N) * sum(datat$mu1f) - (1 / N) * sum(datat$mu0f)
@@ -44,13 +38,11 @@ estimators <- function(data) {
     # Linear model #
     
     ### True model ###
-    model1 <- lm(y ~ mu1 + mu0 + mu02 + mu12 + mu01, data = datat1)
+    model1 <- lm(y ~ mu1 + mu0, data = datat1)
     pred1 <- predict(model1, newdata = datat)
     
-    model0 <- lm(y ~ mu1 + mu0 + mu02 + mu12 + mu01, data = datat0)
+    model0 <- lm(y ~ mu1 + mu0, data = datat0)
     pred0 <- predict(model0, newdata = datat)
-    
-    #yp <- ifelse(datat$tr == 1, pred1, pred0)
     
     ### Misspecified model ###
     mod1 <- lm(y ~ mu1f + mu0f, data = datat1)
@@ -58,8 +50,6 @@ estimators <- function(data) {
     
     mod0 <- lm(y ~ mu1f + mu0f, data = datat0)
     pre0 <- predict(mod0, newdata = datat)
-    
-    #ypf <- ifelse(datat$tr == 1, pre1, pre0)
     
     ri_fpgt[i] <- (1 / N) * sum(pred1) - (1 / N) * sum(pred0)
     ri_fpgf[i] <- (1 / N) * sum(pre1) - (1 / N) * sum(pre0)
@@ -82,14 +72,15 @@ estimators <- function(data) {
       train_data_1 <- subset(train_data, tr == 1)
       
       # Train random forest on untreated (Tr == 0)
-      m_rf_0 <- ranger(y ~ murf1+ murf0 + murf02 + murf12 + murf10, data = train_data_0, num.trees = 300, mtry = 2, min.node.size = 5)
+      m_rf_0 <- ranger(y ~ murf1+ murf0, data = train_data_0, num.trees = 300, mtry = 2, min.node.size = 5)
       pred0_rf[valid_idx] <- predict(m_rf_0, data = valid_data)$predictions
       
       # Train random forest on treated (Tr == 1)
-      m_rf_1 <- ranger(y ~ murf1+ murf0 + murf02 + murf12 + murf10, data = train_data_1, num.trees = 300, mtry = 2, min.node.size = 5)
+      m_rf_1 <- ranger(y ~ murf1+ murf0, data = train_data_1, num.trees = 300, mtry = 2, min.node.size = 5)
       pred1_rf[valid_idx] <- predict(m_rf_1, data = valid_data)$predictions
       
       #Fasle non-linear model
+      
       # Train random forest on untreated (Tr == 0)
       m_rf_0f <- ranger(y ~ murf1_f + murf0_f, data = train_data_0, num.trees = 300, mtry = 2, min.node.size = 5)
       pre0_rf[valid_idx] <- predict(m_rf_0f, data = valid_data)$predictions
@@ -106,5 +97,8 @@ estimators <- function(data) {
     
   }
   
+  return(cbind(ri_pgt, ri_pgf,rf_pgt,rf_pgf, ri_fpgt, ri_fpgf,rf_fpgt, rf_fpgf))
+}
+
   return(cbind(ri_pgt, ri_pgf,rf_pgt,rf_pgf, ri_fpgt, ri_fpgf,rf_fpgt, rf_fpgf))
 }
