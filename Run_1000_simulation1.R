@@ -1,20 +1,21 @@
 ############################
 # Run file for Simulation 1#
 ############################
+library(xtable)
 
 ##########
 #DESIGN A#
 ##########
 
-source("Simulation1_DesignA.R")
-source("RI_estimators.R")
-source("AIPW_estimators.R")
+source("..../Simulation 1/Sim1_DesA_cf.R")
+source("..../Simulation 1/Estimators_cf.R")
+source("..../Simulation 1/matching_estimators.R")
 
 N <- 1000
-seed <- 3001
-datat <- gen.data.A(N,  seed)
+seed <- 2025
+simA2 <- gen.data.A(N,  seed)
 
-estim.A2 <- estimators(datat)
+estim.A2 <- estimators(simA2)
 
 ri_pgt.A2 <- estim.A2[, 1]
 ri_pgf.A2 <- estim.A2[, 2]
@@ -25,37 +26,27 @@ ri_fpgf.A2 <- estim.A2[, 6]
 rf_fpgt.A2 <- estim.A2[, 7]
 rf_fpgf.A2 <- estim.A2[, 8]
 
-AIPW.A2 <- estimators_aipw(datat)
+match.A2 <- matching_estimators(simA2)
 
-dr_pt.A2 <- AIPW.A2[, 1]
-dr_p_tp.A2 <- AIPW.A2[, 2]
-dr_p_to.A2 <- AIPW.A2[, 3]
-dr_pf.A2 <- AIPW.A2[, 4]
-dr_pt_n.A2 <- AIPW.A2[, 5]
-dr_p_tp_n.A2 <- AIPW.A2[, 6]
-dr_p_to_n.A2 <- AIPW.A2[, 7]
-dr_pf_n.A2 <- AIPW.A2[, 8]
-dr_ft.A2 <- AIPW.A2[, 9]
-dr_f_tp.A2 <- AIPW.A2[, 10]
-dr_f_to.A2 <- AIPW.A2[, 11]
-dr_ff.A2 <- AIPW.A2[, 12]
-dr_ft_n.A2 <- AIPW.A2[, 13]
-dr_f_tp_n.A2 <- AIPW.A2[, 14]
-dr_f_to_n.A2 <- AIPW.A2[, 15]
-dr_ff_n.A2 <- AIPW.A2[, 16]
+mat_lin_pgs_t.A2 <- match.A2[, 1]
+mat_lin_pgs_f.A2 <- match.A2[, 2]
+mat_nn_pgs_t.A2 <- match.A2[, 3]
+mat_nn_pgs_f.A2 <- match.A2[, 4]
+mat_lin_fpgs_t.A2 <- match.A2[, 5]
+mat_lin_fpgs_f.A2 <- match.A2[, 6]
+mat_nn_fpgs_t.A2 <- match.A2[, 7]
+mat_nn_fpgs_f.A2 <- match.A2[, 8]
 
 ##########
 #DESIGN B#
 ##########
-source("Simulation1_DesignB.R")
-source("RI_estimators.R")
-source("AIPW_estimators.R")
+source("..../Simulation 1/Sim1_DesB_cf.R")
 
 N <- 1000
-seed <- 3002
-datat <- gen.data.B(N,  seed)
+seed <- 2025
+simB2 <- gen.data.B(N,  seed)
 
-estim.B2 <- estimators(datat)
+estim.B2 <- estimators(simB2)
 
 ri_pgt.B2 <- estim.B2[, 1]
 ri_pgf.B2 <- estim.B2[, 2]
@@ -66,37 +57,27 @@ ri_fpgf.B2 <- estim.B2[, 6]
 rf_fpgt.B2 <- estim.B2[, 7]
 rf_fpgf.B2 <- estim.B2[, 8]
 
-AIPW.B2 <- estimators_aipw(datat)
+match.B2 <- matching_estimators(simB2)
 
-dr_pt.B2 <- AIPW.B2[, 1]
-dr_p_tp.B2 <- AIPW.B2[, 2]
-dr_p_to.B2 <- AIPW.B2[, 3]
-dr_pf.B2 <- AIPW.B2[, 4]
-dr_pt_n.B2 <- AIPW.B2[, 5]
-dr_p_tp_n.B2 <- AIPW.B2[, 6]
-dr_p_to_n.B2 <- AIPW.B2[, 7]
-dr_pf_n.B2 <- AIPW.B2[, 8]
-dr_ft.B2 <- AIPW.B2[, 9]
-dr_f_tp.B2 <- AIPW.B2[, 10]
-dr_f_to.B2 <- AIPW.B2[, 11]
-dr_ff.B2 <- AIPW.B2[, 12]
-dr_ft_n.B2 <- AIPW.B2[, 13]
-dr_f_tp_n.B2 <- AIPW.B2[, 14]
-dr_f_to_n.B2 <- AIPW.B2[, 15]
-dr_ff_n.B2 <- AIPW.B2[, 16]
+mat_lin_pgs_t.B2 <- match.B2[, 1]
+mat_lin_pgs_f.B2 <- match.B2[, 2]
+mat_nn_pgs_t.B2 <- match.B2[, 3]
+mat_nn_pgs_f.B2 <- match.B2[, 4]
+mat_lin_fpgs_t.B2 <- match.B2[, 5]
+mat_lin_fpgs_f.B2 <- match.B2[, 6]
+mat_nn_fpgs_t.B2 <- match.B2[, 7]
+mat_nn_fpgs_f.B2 <- match.B2[, 8]
 
 ###########
 # Design C#
 ###########
-source("Simulation1_DesignC.R")
-source("RI_estimators.R")
-source("AIPW_estimators.R")
+source("..../Simulation 1/Sim1_DesC_cf.R")
 
 N <- 1000
-seed <- 3003
-datat <- gen.data.C(N,  seed)
+seed <- 2025
+simC2 <- gen.data.C(N,  seed)
 
-estim.C2 <- estimators(datat)
+estim.C2 <- estimators(simC2)
 
 ri_pgt.C2 <- estim.C2[, 1]
 ri_pgf.C2 <- estim.C2[, 2]
@@ -107,24 +88,18 @@ ri_fpgf.C2 <- estim.C2[, 6]
 rf_fpgt.C2 <- estim.C2[, 7]
 rf_fpgf.C2 <- estim.C2[, 8]
 
-AIPW.C2 <- estimators_aipw(datat)
+match.C2 <- matching_estimators(simC2)
 
-dr_pt.C2 <- AIPW.C2[, 1]
-dr_p_tp.C2 <- AIPW.C2[, 2]
-dr_p_to.C2 <- AIPW.C2[, 3]
-dr_pf.C2 <- AIPW.C2[, 4]
-dr_pt_n.C2 <- AIPW.C2[, 5]
-dr_p_tp_n.C2 <- AIPW.C2[, 6]
-dr_p_to_n.C2 <- AIPW.C2[, 7]
-dr_pf_n.C2 <- AIPW.C2[, 8]
-dr_ft.C2 <- AIPW.C2[, 9]
-dr_f_tp.C2 <- AIPW.C2[, 10]
-dr_f_to.C2 <- AIPW.C2[, 11]
-dr_ff.C2 <- AIPW.C2[, 12]
-dr_ft_n.C2 <- AIPW.C2[, 13]
-dr_f_tp_n.C2 <- AIPW.C2[, 14]
-dr_f_to_n.C2 <- AIPW.C2[, 15]
-dr_ff_n.C2 <- AIPW.C2[, 16]
+mat_lin_pgs_t.C2 <- match.C2[, 1]
+mat_lin_pgs_f.C2 <- match.C2[, 2]
+mat_nn_pgs_t.C2 <- match.C2[, 3]
+mat_nn_pgs_f.C2 <- match.C2[, 4]
+mat_lin_fpgs_t.C2 <- match.C2[, 5]
+mat_lin_fpgs_f.C2 <- match.C2[, 6]
+mat_nn_fpgs_t.C2 <- match.C2[, 7]
+mat_nn_fpgs_f.C2 <- match.C2[, 8]
+
+#saving data 
 
 # Prepare the results for latex table
 
@@ -175,64 +150,116 @@ False.C2 <- round(cbind(
   digits = 3
 )
 
-AIPW.A2 <- round(cbind(
-  mean(dr_pt.A2) - 3, sd(dr_pt.A2), mean((dr_pt.A2 - 3)^2),
-  mean(dr_p_tp.A2) - 3, sd(dr_p_tp.A2), mean((dr_p_tp.A2 - 3)^2), 
-  mean(dr_p_to.A2) - 3, sd(dr_p_to.A2), mean((dr_p_to.A2 - 3)^2),
-  mean(dr_pf.A2) - 3, sd(dr_pf.A2), mean((dr_pf.A2 - 3)^2),
-  mean(dr_pt_n.A2) - 3, sd(dr_pt_n.A2), mean((dr_pt_n.A2 - 3)^2),
-  mean(dr_p_tp_n.A2) - 3, sd(dr_p_tp_n.A2), mean((dr_p_tp_n.A2 - 3)^2), 
-  mean(dr_p_to_n.A2) - 3, sd(dr_p_to_n.A2), mean((dr_p_to_n.A2 - 3)^2),
-  mean(dr_pf_n.A2) - 3, sd(dr_pf_n.A2), mean((dr_pf_n.A2 - 3)^2),
-  mean(dr_ft.A2) - 3, sd(dr_ft.A2), mean((dr_ft.A2 - 3)^2),
-  mean(dr_f_tp.A2) - 3, sd(dr_f_tp.A2), mean((dr_f_tp.A2 - 3)^2), 
-  mean(dr_f_to.A2) - 3, sd(dr_f_to.A2), mean((dr_f_to.A2 - 3)^2),
-  mean(dr_ff.A2) - 3, sd(dr_ff.A2), mean((dr_ff.A2 - 3)^2),
-  mean(dr_ft_n.A2) - 3, sd(dr_ft_n.A2), mean((dr_ft_n.A2 - 3)^2),
-  mean(dr_f_tp_n.A2) - 3, sd(dr_f_tp_n.A2), mean((dr_f_tp_n.A2 - 3)^2), 
-  mean(dr_f_to_n.A2) - 3, sd(dr_f_to_n.A2), mean((dr_f_to_n.A2 - 3)^2),
-  mean(dr_ff_n.A2) - 3, sd(dr_ff_n.A2), mean((dr_ff_n.A2 - 3)^2)),
+
+MAT.A2 <- round(cbind(
+  mean(mat_lin_pgs_t.A2) - 3, sd(mat_lin_pgs_t.A2), mean((mat_lin_pgs_t.A2 - 3)^2),
+  mean(mat_lin_pgs_f.A2) - 3, sd(mat_lin_pgs_f.A2), mean((mat_lin_pgs_f.A2 - 3)^2), 
+  mean(mat_nn_pgs_t.A2) - 3, sd(mat_nn_pgs_t.A2), mean((mat_nn_pgs_t.A2 - 3)^2),
+  mean(mat_nn_pgs_f.A2) - 3, sd(mat_nn_pgs_f.A2), mean((mat_nn_pgs_f.A2 - 3)^2),
+  mean(mat_lin_fpgs_t.A2) - 3, sd(mat_lin_fpgs_t.A2), mean((mat_lin_fpgs_t.A2 - 3)^2),
+  mean(mat_lin_fpgs_f.A2) - 3, sd(mat_lin_fpgs_f.A2), mean((mat_lin_fpgs_f.A2 - 3)^2), 
+  mean(mat_nn_fpgs_t.A2) - 3, sd(mat_nn_fpgs_t.A2), mean((mat_nn_fpgs_t.A2 - 3)^2),
+  mean(mat_nn_fpgs_f.A2) - 3, sd(mat_nn_fpgs_f.A2), mean((mat_nn_fpgs_f.A2 - 3)^2)),
   digits = 3
 )
 
-AIPW.B2 <- round(cbind(
-  mean(dr_pt.B2) - 3, sd(dr_pt.B2), mean((dr_pt.B2 - 3)^2),
-  mean(dr_p_tp.B2) - 3, sd(dr_p_tp.B2), mean((dr_p_tp.B2 - 3)^2), 
-  mean(dr_p_to.B2) - 3, sd(dr_p_to.B2), mean((dr_p_to.B2 - 3)^2),
-  mean(dr_pf.B2) - 3, sd(dr_pf.B2), mean((dr_pf.B2 - 3)^2),
-  mean(dr_pt_n.B2) - 3, sd(dr_pt_n.B2), mean((dr_pt_n.B2 - 3)^2),
-  mean(dr_p_tp_n.B2) - 3, sd(dr_p_tp_n.B2), mean((dr_p_tp_n.B2 - 3)^2), 
-  mean(dr_p_to_n.B2) - 3, sd(dr_p_to_n.B2), mean((dr_p_to_n.B2 - 3)^2),
-  mean(dr_pf_n.B2) - 3, sd(dr_pf_n.B2), mean((dr_pf_n.B2 - 3)^2),
-  mean(dr_ft.B2) - 3, sd(dr_ft.B2), mean((dr_ft.B2 - 3)^2),
-  mean(dr_f_tp.B2) - 3, sd(dr_f_tp.B2), mean((dr_f_tp.B2 - 3)^2), 
-  mean(dr_f_to.B2) - 3, sd(dr_f_to.B2), mean((dr_f_to.B2 - 3)^2),
-  mean(dr_ff.B2) - 3, sd(dr_ff.B2), mean((dr_ff.B2 - 3)^2),
-  mean(dr_ft_n.B2) - 3, sd(dr_ft_n.B2), mean((dr_ft_n.B2 - 3)^2),
-  mean(dr_f_tp_n.B2) - 3, sd(dr_f_tp_n.B2), mean((dr_f_tp_n.B2 - 3)^2), 
-  mean(dr_f_to_n.B2) - 3, sd(dr_f_to_n.B2), mean((dr_f_to_n.B2 - 3)^2),
-  mean(dr_ff_n.B2) - 3, sd(dr_ff_n.B2), mean((dr_ff_n.B2 - 3)^2)),
+MAT.B2 <- round(cbind(
+  mean(mat_lin_pgs_t.B2) - 3, sd(mat_lin_pgs_t.B2), mean((mat_lin_pgs_t.B2 - 3)^2),
+  mean(mat_lin_pgs_f.B2) - 3, sd(mat_lin_pgs_f.B2), mean((mat_lin_pgs_f.B2 - 3)^2), 
+  mean(mat_nn_pgs_t.B2) - 3, sd(mat_nn_pgs_t.B2), mean((mat_nn_pgs_t.B2 - 3)^2),
+  mean(mat_nn_pgs_f.B2) - 3, sd(mat_nn_pgs_f.B2), mean((mat_nn_pgs_f.B2 - 3)^2),
+  mean(mat_lin_fpgs_t.B2) - 3, sd(mat_lin_fpgs_t.B2), mean((mat_lin_fpgs_t.B2 - 3)^2),
+  mean(mat_lin_fpgs_f.B2) - 3, sd(mat_lin_fpgs_f.B2), mean((mat_lin_fpgs_f.B2 - 3)^2), 
+  mean(mat_nn_fpgs_t.B2) - 3, sd(mat_nn_fpgs_t.B2), mean((mat_nn_fpgs_t.B2 - 3)^2),
+  mean(mat_nn_fpgs_f.B2) - 3, sd(mat_nn_fpgs_f.B2), mean((mat_nn_fpgs_f.B2 - 3)^2)),
+  digits = 3
+)
+
+MAT.C2 <- round(cbind(
+  mean(mat_lin_pgs_t.C2) - 3, sd(mat_lin_pgs_t.C2), mean((mat_lin_pgs_t.C2 - 3)^2),
+  mean(mat_lin_pgs_f.C2) - 3, sd(mat_lin_pgs_f.C2), mean((mat_lin_pgs_f.C2 - 3)^2), 
+  mean(mat_nn_pgs_t.C2) - 3, sd(mat_nn_pgs_t.C2), mean((mat_nn_pgs_t.C2 - 3)^2),
+  mean(mat_nn_pgs_f.C2) - 3, sd(mat_nn_pgs_f.C2), mean((mat_nn_pgs_f.C2 - 3)^2),
+  mean(mat_lin_fpgs_t.C2) - 3, sd(mat_lin_fpgs_t.C2), mean((mat_lin_fpgs_t.C2 - 3)^2),
+  mean(mat_lin_fpgs_f.C2) - 3, sd(mat_lin_fpgs_f.C2), mean((mat_lin_fpgs_f.C2 - 3)^2), 
+  mean(mat_nn_fpgs_t.C2) - 3, sd(mat_nn_fpgs_t.C2), mean((mat_nn_fpgs_t.C2 - 3)^2),
+  mean(mat_nn_fpgs_f.C2) - 3, sd(mat_nn_fpgs_f.C2), mean((mat_nn_fpgs_f.C2 - 3)^2)),
   digits = 3
 )
 
 
-AIPW.C2 <- round(cbind(
-  mean(dr_pt.C2) - 3, sd(dr_pt.C2), mean((dr_pt.C2 - 3)^2),
-  mean(dr_p_tp.C2) - 3, sd(dr_p_tp.C2), mean((dr_p_tp.C2 - 3)^2), 
-  mean(dr_p_to.C2) - 3, sd(dr_p_to.C2), mean((dr_p_to.C2 - 3)^2),
-  mean(dr_pf.C2) - 3, sd(dr_pf.C2), mean((dr_pf.C2 - 3)^2),
-  mean(dr_pt_n.C2) - 3, sd(dr_pt_n.C2), mean((dr_pt_n.C2 - 3)^2),
-  mean(dr_p_tp_n.C2) - 3, sd(dr_p_tp_n.C2), mean((dr_p_tp_n.C2 - 3)^2), 
-  mean(dr_p_to_n.C2) - 3, sd(dr_p_to_n.C2), mean((dr_p_to_n.C2 - 3)^2),
-  mean(dr_pf_n.C2) - 3, sd(dr_pf_n.C2), mean((dr_pf_n.C2 - 3)^2),
-  mean(dr_ft.C2) - 3, sd(dr_ft.C2), mean((dr_ft.C2 - 3)^2),
-  mean(dr_f_tp.C2) - 3, sd(dr_f_tp.C2), mean((dr_f_tp.C2 - 3)^2), 
-  mean(dr_f_to.C2) - 3, sd(dr_f_to.C2), mean((dr_f_to.C2 - 3)^2),
-  mean(dr_ff.C2) - 3, sd(dr_ff.C2), mean((dr_ff.C2 - 3)^2),
-  mean(dr_ft_n.C2) - 3, sd(dr_ft_n.C2), mean((dr_ft_n.C2 - 3)^2),
-  mean(dr_f_tp_n.C2) - 3, sd(dr_f_tp_n.C2), mean((dr_f_tp_n.C2 - 3)^2), 
-  mean(dr_f_to_n.C2) - 3, sd(dr_f_to_n.C2), mean((dr_f_to_n.C2 - 3)^2),
-  mean(dr_ff_n.C2) - 3, sd(dr_ff_n.C2), mean((dr_ff_n.C2 - 3)^2)),
-  digits = 3
+#saving data
+results_A1000_s1_ri <- data.frame(
+  ri_pgt.A2 = ri_pgt.A2,
+  ri_pgf.A2 = ri_pgf.A2,
+  rf_pgt.A2 = rf_pgt.A2,
+  rf_pgf.A2 = rf_pgf.A2,
+  ri_fpgt.A2 = ri_fpgt.A2,
+  ri_fpgf.A2 = ri_fpgf.A2,
+  rf_fpgt.A2 = rf_fpgt.A2,
+  rf_fpgf.A2 = rf_fpgf.A2
 )
+write.csv(results_A1000_s1_ri, file = "..../Simulation 1/results_A1000_s1_ri.csv", row.names = FALSE)
+
+results_B1000_s1_ri <- data.frame(
+  ri_pgt.B2 = ri_pgt.B2,
+  ri_pgf.B2 = ri_pgf.B2,
+  rf_pgt.B2 = rf_pgt.B2,
+  rf_pgf.B2 = rf_pgf.B2,
+  ri_fpgt.B2 = ri_fpgt.B2,
+  ri_fpgf.B2 = ri_fpgf.B2,
+  rf_fpgt.B2 = rf_fpgt.B2,
+  rf_fpgf.B2 = rf_fpgf.B2
+)
+write.csv(results_B1000_s1_ri, file = "..../Simulation 1/results_B1000_s1_ri.csv", row.names = FALSE)
+
+results_C1000_s1_ri <- data.frame(
+  ri_pgt.C2 = ri_pgt.C2,
+  ri_pgf.C2 = ri_pgf.C2,
+  rf_pgt.C2 = rf_pgt.C2,
+  rf_pgf.C2 = rf_pgf.C2,
+  ri_fpgt.C2 = ri_fpgt.C2,
+  ri_fpgf.C2 = ri_fpgf.C2,
+  rf_fpgt.C2 = rf_fpgt.C2,
+  rf_fpgf.C2 = rf_fpgf.C2
+)
+write.csv(results_C1000_s1_ri, file = "..../Simulation 1/results_C1000_s1_ri.csv", row.names = FALSE)
+
+results_A1000_s1_mat <- data.frame(
+  mat_lin_pgs_t.A2 = mat_lin_pgs_t.A2,
+  mat_lin_pgs_f.A2 = mat_lin_pgs_f.A2,
+  mat_nn_pgs_t.A2 = mat_nn_pgs_t.A2,
+  mat_nn_pgs_f.A2 = mat_nn_pgs_f.A2,
+  mat_lin_fpgs_t.A2 = mat_lin_fpgs_t.A2,
+  mat_lin_fpgs_f.A2 = mat_lin_fpgs_f.A2,
+  mat_nn_fpgs_t.A2 = mat_nn_fpgs_t.A2,
+  mat_nn_fpgs_f.A2 = mat_nn_fpgs_f.A2
+)
+write.csv(results_A1000_s1_mat, file = "..../Simulation 1/results_A1000_s1_mat.csv", row.names = FALSE)
+
+results_B1000_s1_mat <- data.frame(
+  mat_lin_pgs_t.B2 = mat_lin_pgs_t.B2,
+  mat_lin_pgs_f.B2 = mat_lin_pgs_f.B2,
+  mat_nn_pgs_t.B2 = mat_nn_pgs_t.B2,
+  mat_nn_pgs_f.B2 = mat_nn_pgs_f.B2,
+  mat_lin_fpgs_t.B2 = mat_lin_fpgs_t.B2,
+  mat_lin_fpgs_f.B2 = mat_lin_fpgs_f.B2,
+  mat_nn_fpgs_t.B2 = mat_nn_fpgs_t.B2,
+  mat_nn_fpgs_f.B2 = mat_nn_fpgs_f.B2
+)
+write.csv(results_B1000_s1_mat, file = "..../Simulation 1/results_B1000_s1_mat.csv", row.names = FALSE)
+
+results_C1000_s1_mat <- data.frame(
+  mat_lin_pgs_t.C2 = mat_lin_pgs_t.C2,
+  mat_lin_pgs_f.C2 = mat_lin_pgs_f.C2,
+  mat_nn_pgs_t.C2 = mat_nn_pgs_t.C2,
+  mat_nn_pgs_f.C2 = mat_nn_pgs_f.C2,
+  mat_lin_fpgs_t.C2 = mat_lin_fpgs_t.C2,
+  mat_lin_fpgs_f.C2 = mat_lin_fpgs_f.C2,
+  mat_nn_fpgs_t.C2 = mat_nn_fpgs_t.C2,
+  mat_nn_fpgs_f.C2 = mat_nn_fpgs_f.C2
+)
+write.csv(results_C1000_s1_mat, file = "..../Simulation 1/results_C1000_s1_mat.csv", row.names = FALSE)
+
+
 
