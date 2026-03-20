@@ -8,12 +8,6 @@
 library(ranger)
 library(caret)
 
-#contains function with argument N = sample size and seed
-# that generates 1000 datasets of Design B,  simulation 1.
-
-library(ranger)
-library(caret)
-
 gen.data.B <- function(N, seed){
   set.seed(seed)
   datat2 <- vector("list", 1000)
