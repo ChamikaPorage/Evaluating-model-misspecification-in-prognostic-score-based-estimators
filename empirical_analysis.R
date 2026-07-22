@@ -1,21 +1,11 @@
 #load required packages
-library(devtools)
 library(boot)
-library(MASS) 
-library(randomForest)
-library(rpart)
-library(xtable)
-library(PSW)
-library(iWeigReg)
-library(cobalt)
-library(WeightIt)
-library(table1)
-library(readxl)
 library(caret)
-library(xgboost)
 library(dplyr)
 library(ranger)
 library(Matching)
+library(Mass)
+
 #read data from dfmale.csv and for_table8.csv
 datat <- read.csv(file = "C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Emp_ana_new/df_allgenders.csv")
 
