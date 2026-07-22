@@ -7,7 +7,7 @@ library(Matching)
 library(Mass)
 
 #read data from dfmale.csv and for_table8.csv
-datat <- read.csv(file = "C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Emp_ana_new/df_allgenders.csv")
+datat <- read.csv(file = "C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Emp_ana_new/df_all.csv")
 
 datat <- datat %>%
   mutate(
