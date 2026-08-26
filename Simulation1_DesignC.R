@@ -1,6 +1,6 @@
-############################
-# Simulation1 : Design C   #
-############################
+##############
+# DESIGN C   #
+##############
 #contains function with argument N=sample size and seed
 # that generates 1000 datasets of Design C, simulation 1.
 library(ranger)
@@ -23,9 +23,8 @@ gen.data.C <- function(N, seed){
     
     a <- 0.8; b <- 0.5; b2 <- -0.15
     c <- 0.5; c2 <- -0.15
-    d1 <- -0.15; d2 <- 0.4
     
-    eta  <- -(a + b*x1 + b2*x12 + c*x2 + c2*x22 + d1*e1 + d2*e2)
+    eta  <- -(a + b*x1 + b2*x12 + c*x2 + c2*x22)
     prob <- plogis(eta)
     
     tr <- rbinom(N, 1, prob)
@@ -42,19 +41,19 @@ gen.data.C <- function(N, seed){
     datat0 <- subset(datat, tr == 0)
     datat1 <- subset(datat, tr == 1)
     
-    # TRUE OR (Gaussian identity)
+    # TRUE OR :Gaussian identity
     mod0 <- lm(y ~ x1 + x12 + x2 + x22 + x_12 + e1 + e2, data = datat0)
     mu0  <- predict(mod0, newdata = datat)
     
     mod1 <- lm(y ~ x1 + x12 + x2 + x22 + x_12 + e1 + e2, data = datat1)
     mu1  <- predict(mod1, newdata = datat)
     
-    # FALSE OR: wrong link only (Gaussian log link with omitted covariates)
-    mod0f <- glm(y ~  x_12 + x1 + e1,
+    # FALSE OR: Gaussian log link with omitted covariates
+    mod0f <- glm(y ~  x1 + x_12 + e1,
                  family = gaussian(link = "log"), data = datat0)
     mu0f <- predict(mod0f, newdata = datat, type = "response")
     
-    mod1f <- glm(y ~   x_12 + x1 + e1,
+    mod1f <- glm(y ~   x1 + x_12 + e1,
                  family = gaussian(link = "log"), data = datat1)
     mu1f <- predict(mod1f, newdata = datat, type = "response")
     
@@ -84,21 +83,18 @@ gen.data.C <- function(N, seed){
                                   data = valid_data[, c("x1","x12","x2","x22","x_12","e1","e2")])$predictions
       
       # False RF
-      mod_rf_0 <- ranger(y ~ x_12 + x1 + e1, data = train_data_0,
+      mod_rf_0 <- ranger(y ~ x1 + x_12 + e1, data = train_data_0,
                          num.trees = 300, mtry = 2, min.node.size = 5)
-      murf0_f[valid_idx] <- predict(mod_rf_0, data = valid_data[, c("x_12","x1","e1" )])$predictions
+      murf0_f[valid_idx] <- predict(mod_rf_0, data = valid_data[, c("x1","x_12","e1" )])$predictions
       
-      mod_rf_1 <- ranger(y ~ x_12 + x1 + e1, data = train_data_1,
+      mod_rf_1 <- ranger(y ~ x1 + x_12 + e1, data = train_data_1,
                          num.trees = 300, mtry = 2, min.node.size = 5)
-      murf1_f[valid_idx] <- predict(mod_rf_1, data = valid_data[, c("x_12","x1","e1")])$predictions
+      murf1_f[valid_idx] <- predict(mod_rf_1, data = valid_data[, c("x1","x_12","e1")])$predictions
     }
     
     datat2[[i]] <- data.frame(tr, y, mu0, mu1, mu0f, mu1f, murf0, murf1, murf0_f, murf1_f)
     colnames(datat2[[i]]) <- c("tr", "y", "mu0", "mu1", "mu0f", "mu1f", "murf0", "murf1", "murf0_f", "murf1_f")
   }
   
-  return(datat2)
-}
-
   return(datat2)
 }
