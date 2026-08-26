@@ -1,6 +1,6 @@
-#######################
-#Simulation1: Design B#
-#######################
+##########
+#DESIGN B#
+##########
 
 #contains function with argument N = sample size and seed
 # that generates 1000 datasets of Design B,  simulation 1.
@@ -27,7 +27,7 @@ gen.data.B <- function(N, seed){
     c <- 0.5; c2 <- -0.15
     d1 <- -0.15; d2 <- 0.4
     
-    eta  <- -(a + b*x1 + b2*x12 + c*x2 + c2*x22 + d1*e1 + d2*e2)
+    eta  <- -(a + b*x1 + b2*x12 + c*x2 + c2*x22)
     prob <- plogis(eta)   
     tr   <- rbinom(N, 1, prob)
     
