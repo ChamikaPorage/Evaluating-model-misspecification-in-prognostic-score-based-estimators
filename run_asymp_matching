@@ -56,8 +56,8 @@ cat("PGS:\n");  print(round(out_false_C1$summary_pgs, 3))
 cat("FPGS:\n"); print(round(out_false_C1$summary_fpgs, 3))
 
 #### Simulation 2 ####
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/var_match.R")
-source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/var_matching.R")
+source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 1/var_mat.R")
+
 
 ## Design A2 ##
 source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/Sim2_DesA_cf.R")
@@ -65,14 +65,14 @@ N <- 3000
 seed <- 2025
 simA2 <- gen.data.A2(N, seed)
 
-out_true_A2  <- run_matching_mc_both(simA2, which="lin_true",  truth=3.7, M=1, L=2, verbose_errors = TRUE)
-out_false_A2 <- run_matching_mc_both(simA2, which="lin_false", truth=3.7, M=1, L=2, verbose_errors = TRUE)
+out_true_A2  <- run_matching_mc_both(simA2, which="lin_true",  truth=2.6, M=1, L=2, verbose_errors = TRUE)
+out_false_A2 <- run_matching_mc_both(simA2, which="lin_false", truth=2.6, M=1, L=2, verbose_errors = TRUE)
 
-cat("\n--- Sim1 Design A: lin_true ---\n")
+cat("\n--- Sim2 Design A: lin_true ---\n")
 cat("PGS:\n");  print(round(out_true_A2$summary_pgs, 3))
 cat("FPGS:\n"); print(round(out_true_A2$summary_fpgs, 3))
 
-cat("\n--- Sim1 Design A: lin_false ---\n")
+cat("\n--- Sim2 Design A: lin_false ---\n")
 cat("PGS:\n");  print(round(out_false_A2$summary_pgs, 3))
 cat("FPGS:\n"); print(round(out_false_A2$summary_fpgs, 3))
 
@@ -81,14 +81,14 @@ cat("FPGS:\n"); print(round(out_false_A2$summary_fpgs, 3))
 source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/Sim2_DesB_cf.R")
 simB2 <- gen.data.B2(N, seed)
 
-out_true_B2  <- run_matching_mc_both(simB2, which="lin_true",  truth=3.7, M=1, L=2, verbose_errors = TRUE)
-out_false_B2 <- run_matching_mc_both(simB2, which="lin_false", truth=3.7, M=1, L=2, verbose_errors = TRUE)
+out_true_B2  <- run_matching_mc_both(simB2, which="lin_true",  truth=2.6, M=1, L=2, verbose_errors = TRUE)
+out_false_B2 <- run_matching_mc_both(simB2, which="lin_false", truth=2.6, M=1, L=2, verbose_errors = TRUE)
 
-cat("\n--- Sim1 Design A: lin_true ---\n")
+cat("\n--- Sim2 Design B: lin_true ---\n")
 cat("PGS:\n");  print(round(out_true_B2$summary_pgs, 3))
 cat("FPGS:\n"); print(round(out_true_B2$summary_fpgs, 3))
 
-cat("\n--- Sim1 Design A: lin_false ---\n")
+cat("\n--- Sim2 Design B: lin_false ---\n")
 cat("PGS:\n");  print(round(out_false_B2$summary_pgs, 3))
 cat("FPGS:\n"); print(round(out_false_B2$summary_fpgs, 3))
 
@@ -97,13 +97,13 @@ cat("FPGS:\n"); print(round(out_false_B2$summary_fpgs, 3))
 source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/Sim2_DesC_cf.R")
 simC2 <- gen.data.C2(N, seed)
 
-out_true_C2  <- run_matching_mc_both(simC2, which="lin_true",  truth=3.7, M=1, L=2, verbose_errors = TRUE)
-out_false_C2 <- run_matching_mc_both(simC2, which="lin_false", truth=3.7, M=1, L=2, verbose_errors = TRUE)
+out_true_C2  <- run_matching_mc_both(simC2, which="lin_true",  truth=2.6, M=1, L=2, verbose_errors = TRUE)
+out_false_C2 <- run_matching_mc_both(simC2, which="lin_false", truth=2.6, M=1, L=2, verbose_errors = TRUE)
 
-cat("\n--- Sim1 Design A: lin_true ---\n")
+cat("\n--- Sim2 Design C: lin_true ---\n")
 cat("PGS:\n");  print(round(out_true_C2$summary_pgs, 3))
 cat("FPGS:\n"); print(round(out_true_C2$summary_fpgs, 3))
 
-cat("\n--- Sim1 Design A: lin_false ---\n")
+cat("\n--- Sim2 Design C: lin_false ---\n")
 cat("PGS:\n");  print(round(out_false_C2$summary_pgs, 3))
 cat("FPGS:\n"); print(round(out_false_C2$summary_fpgs, 3))
