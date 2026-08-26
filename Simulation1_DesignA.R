@@ -1,6 +1,6 @@
-#########################
-# Simulation1 : Design A#
-#########################
+###########
+# DESIGN A#
+###########
 # contains function with argument N  =  sample size and seed
 # that generates 1000 datasets of Design A,  Simulation 1.
 
@@ -30,10 +30,8 @@ gen.data.A <- function(N, seed){
     b2 <- -0.15
     c <- 0.5
     c2 <- -0.15
-    d1 <- -0.15
-    d2<- 0.4
     
-    eta  <- -(a + b*x1 + b2*x12 + c*x2 + c2*x22 + d1*e1 + d2*e2)
+    eta  <- -(a + b*x1 + b2*x12 + c*x2 + c2*x22)
     prob <- plogis(eta)   
     tr   <- rbinom(N, 1, prob)
     
@@ -49,7 +47,7 @@ gen.data.A <- function(N, seed){
     
     #OR MODELS
     
-    ##linear models##
+    #linear models
     
     datat0 <- subset(datat, tr == 0)
     datat1 <- subset(datat, tr == 1)
@@ -69,7 +67,7 @@ gen.data.A <- function(N, seed){
     mod1f <- lm(y ~ x1 + x2 + x22 + x_12 + e1 + e2, data = datat1)
     mu1f <- predict(mod1f, newdata = datat)
     
-    ##Non-linear model##
+    ###Non-linear model
     
     # Cross-fitting setup
     folds <- createFolds(datat$y, k = 5, list = TRUE)
@@ -85,8 +83,6 @@ gen.data.A <- function(N, seed){
       # Separate treated and untreated data
       data0_train <- subset(train_data, tr == 0)
       data1_train <- subset(train_data, tr == 1)
-
-      #True non-linear model
       
       # Train random forest on untreated (Tr == 0)
       model_rf_0 <- ranger(y ~ x1 + x12 + x2 + x22 + x_12 + e1 + e2, data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
@@ -97,7 +93,6 @@ gen.data.A <- function(N, seed){
       murf1[valid_idx] <- predict(model_rf_1, data = valid_data[, c("x1","x12", "x2", "x22", "x_12", "e1", "e2")])$predictions
       
       #Fasle non-linear model
-      
       # Train random forest on untreated (Tr == 0)
       mod_rf_0 <- ranger(y ~ x1  + x2 + x22 + x_12 + e1 + e2, data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
       murf0_f[valid_idx] <- predict(mod_rf_0, data = valid_data[, c("x1", "x2", "x22", "x_12", "e1", "e2")])$predictions
@@ -113,4 +108,3 @@ gen.data.A <- function(N, seed){
   }
   return(datat2)
 }
-
