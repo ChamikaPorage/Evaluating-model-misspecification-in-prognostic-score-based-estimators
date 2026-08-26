@@ -64,7 +64,7 @@ print(round(outC1$sum_false, 3))
 ##Design A##
 source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/Sim2_DesA_cf.R")
         
-truth_pop <- 3.7
+truth_pop <- 2.6
         
 simA2 <- gen.data.A2(N, seed)
         
@@ -81,7 +81,7 @@ print(round(outA2$sum_false, 3))
 ##Design B##
 source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/Sim2_DesB_cf.R")
         
-truth_pop <- 3.7
+truth_pop <- 2.6
         
 simB2 <- gen.data.B2(N, seed)
         
@@ -98,7 +98,7 @@ print(round(outB2$sum_false, 3))
 ##Design C##
 source("C:/Users/chapo752/Dropbox/PhD work- Chamika Porage/Second paper/R codes/Simulation 2/Sim2_DesC_cf.R")
          
-truth_pop <- 3.7
+truth_pop <- 2.6
 
 simC2 <- gen.data.C2(N, seed)
         
