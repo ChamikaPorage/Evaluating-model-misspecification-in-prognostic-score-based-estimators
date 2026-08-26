@@ -106,85 +106,85 @@ mat_nn_fpgs_f.C_s2 <- match.C_s2[, 8]
 # Prepare the results for latex table
 
 True.A_s2 <- round(cbind(
-  mean(ri_pgt.A_s2) - 3.7, sd(ri_pgt.A_s2), mean((ri_pgt.A_s2 - 3.7)^2), 
-  mean(rf_pgt.A_s2) - 3.7, sd(rf_pgt.A_s2), mean((rf_pgt.A_s2 - 3.7)^2), 
-  mean(ri_fpgt.A_s2) - 3.7, sd(ri_fpgt.A_s2), mean((ri_fpgt.A_s2 - 3.7)^2), 
-  mean(rf_fpgt.A_s2) - 3.7, sd(rf_fpgt.A_s2), mean((rf_fpgt.A_s2 - 3.7)^2)), 
+  mean(ri_pgt.A_s2) - 2.6, sd(ri_pgt.A_s2), mean((ri_pgt.A_s2 - 2.6)^2), 
+  mean(rf_pgt.A_s2) - 2.6, sd(rf_pgt.A_s2), mean((rf_pgt.A_s2 - 2.6)^2), 
+  mean(ri_fpgt.A_s2) - 2.6, sd(ri_fpgt.A_s2), mean((ri_fpgt.A_s2 - 2.6)^2), 
+  mean(rf_fpgt.A_s2) - 2.6, sd(rf_fpgt.A_s2), mean((rf_fpgt.A_s2 - 2.6)^2)), 
   digits = 3
 )
 
 False.A_s2 <- round(cbind(
-  mean(ri_pgf.A_s2) - 3.7, sd(ri_pgf.A_s2), mean((ri_pgf.A_s2 - 3.7)^2), 
-  mean(rf_pgf.A_s2) - 3.7, sd(rf_pgf.A_s2), mean((rf_pgf.A_s2 - 3.7)^2), 
-  mean(ri_fpgf.A_s2) - 3.7, sd(ri_fpgf.A_s2), mean((ri_fpgf.A_s2 - 3.7)^2), 
-  mean(rf_fpgf.A_s2) - 3.7, sd(rf_fpgf.A_s2), mean((rf_fpgf.A_s2 - 3.7)^2)), 
+  mean(ri_pgf.A_s2) - 2.6, sd(ri_pgf.A_s2), mean((ri_pgf.A_s2 - 2.6)^2), 
+  mean(rf_pgf.A_s2) - 2.6, sd(rf_pgf.A_s2), mean((rf_pgf.A_s2 - 2.6)^2), 
+  mean(ri_fpgf.A_s2) - 2.6, sd(ri_fpgf.A_s2), mean((ri_fpgf.A_s2 - 2.6)^2), 
+  mean(rf_fpgf.A_s2) - 2.6, sd(rf_fpgf.A_s2), mean((rf_fpgf.A_s2 - 2.6)^2)), 
   digits = 3
 )
 
 True.B_s2 <- round(cbind(
-  mean(ri_pgt.B_s2) - 3.7, sd(ri_pgt.B_s2), mean((ri_pgt.B_s2 - 3.7)^2), 
-  mean(rf_pgt.B_s2) - 3.7, sd(rf_pgt.B_s2), mean((rf_pgt.B_s2 - 3.7)^2), 
-  mean(ri_fpgt.B_s2) - 3.7, sd(ri_fpgt.B_s2), mean((ri_fpgt.B_s2 - 3.7)^2), 
-  mean(rf_fpgt.B_s2) - 3.7, sd(rf_fpgt.B_s2), mean((rf_fpgt.B_s2 - 3.7)^2)), 
+  mean(ri_pgt.B_s2) - 2.6, sd(ri_pgt.B_s2), mean((ri_pgt.B_s2 - 2.6)^2), 
+  mean(rf_pgt.B_s2) - 2.6, sd(rf_pgt.B_s2), mean((rf_pgt.B_s2 - 2.6)^2), 
+  mean(ri_fpgt.B_s2) - 2.6, sd(ri_fpgt.B_s2), mean((ri_fpgt.B_s2 - 2.6)^2), 
+  mean(rf_fpgt.B_s2) - 2.6, sd(rf_fpgt.B_s2), mean((rf_fpgt.B_s2 - 2.6)^2)), 
   digits = 3
 )
 
 False.B_s2 <- round(cbind(
-  mean(ri_pgf.B_s2) - 3.7, sd(ri_pgf.B_s2), mean((ri_pgf.B_s2 - 3.7)^2), 
-  mean(rf_pgf.B_s2) - 3.7, sd(rf_pgf.B_s2), mean((rf_pgf.B_s2 - 3.7)^2), 
-  mean(ri_fpgf.B_s2) - 3.7, sd(ri_fpgf.B_s2), mean((ri_fpgf.B_s2 - 3.7)^2), 
-  mean(rf_fpgf.B_s2) - 3.7, sd(rf_fpgf.B_s2), mean((rf_fpgf.B_s2 - 3.7)^2)), 
+  mean(ri_pgf.B_s2) - 2.6, sd(ri_pgf.B_s2), mean((ri_pgf.B_s2 - 2.6)^2), 
+  mean(rf_pgf.B_s2) - 2.6, sd(rf_pgf.B_s2), mean((rf_pgf.B_s2 - 2.6)^2), 
+  mean(ri_fpgf.B_s2) - 2.6, sd(ri_fpgf.B_s2), mean((ri_fpgf.B_s2 - 2.6)^2), 
+  mean(rf_fpgf.B_s2) - 2.6, sd(rf_fpgf.B_s2), mean((rf_fpgf.B_s2 - 2.6)^2)), 
   digits = 3
 )
 
 True.C_s2 <- round(cbind(
-  mean(ri_pgt.C_s2) - 3.7, sd(ri_pgt.C_s2), mean((ri_pgt.C_s2 - 3.7)^2), 
-  mean(rf_pgt.C_s2) - 3.7, sd(rf_pgt.C_s2), mean((rf_pgt.C_s2 - 3.7)^2), 
-  mean(ri_fpgt.C_s2) - 3.7, sd(ri_fpgt.C_s2), mean((ri_fpgt.C_s2 - 3.7)^2), 
-  mean(rf_fpgt.C_s2) - 3.7, sd(rf_fpgt.C_s2), mean((rf_fpgt.C_s2 - 3.7)^2)), 
+  mean(ri_pgt.C_s2) - 2.6, sd(ri_pgt.C_s2), mean((ri_pgt.C_s2 - 2.6)^2), 
+  mean(rf_pgt.C_s2) - 2.6, sd(rf_pgt.C_s2), mean((rf_pgt.C_s2 - 2.6)^2), 
+  mean(ri_fpgt.C_s2) - 2.6, sd(ri_fpgt.C_s2), mean((ri_fpgt.C_s2 - 2.6)^2), 
+  mean(rf_fpgt.C_s2) - 2.6, sd(rf_fpgt.C_s2), mean((rf_fpgt.C_s2 - 2.6)^2)), 
   digits = 3
 )
 
 False.C_s2 <- round(cbind(
-  mean(ri_pgf.C_s2) - 3.7, sd(ri_pgf.C_s2), mean((ri_pgf.C_s2 - 3.7)^2), 
-  mean(rf_pgf.C_s2) - 3.7, sd(rf_pgf.C_s2), mean((rf_pgf.C_s2 - 3.7)^2), 
-  mean(ri_fpgf.C_s2) - 3.7, sd(ri_fpgf.C_s2), mean((ri_fpgf.C_s2 - 3.7)^2), 
-  mean(rf_fpgf.C_s2) - 3.7, sd(rf_fpgf.C_s2), mean((rf_fpgf.C_s2 - 3.7)^2)), 
+  mean(ri_pgf.C_s2) - 2.6, sd(ri_pgf.C_s2), mean((ri_pgf.C_s2 - 2.6)^2), 
+  mean(rf_pgf.C_s2) - 2.6, sd(rf_pgf.C_s2), mean((rf_pgf.C_s2 - 2.6)^2), 
+  mean(ri_fpgf.C_s2) - 2.6, sd(ri_fpgf.C_s2), mean((ri_fpgf.C_s2 - 2.6)^2), 
+  mean(rf_fpgf.C_s2) - 2.6, sd(rf_fpgf.C_s2), mean((rf_fpgf.C_s2 - 2.6)^2)), 
   digits = 3
 )
 
 MAT.A_s2 <- round(cbind(
-  mean(mat_lin_pgs_t.A_s2) - 3.7, sd(mat_lin_pgs_t.A_s2), mean((mat_lin_pgs_t.A_s2 - 3.7)^2),
-  mean(mat_lin_pgs_f.A_s2) - 3.7, sd(mat_lin_pgs_f.A_s2), mean((mat_lin_pgs_f.A_s2 - 3.7)^2), 
-  mean(mat_nn_pgs_t.A_s2) - 3.7, sd(mat_nn_pgs_t.A_s2), mean((mat_nn_pgs_t.A_s2 - 3.7)^2),
-  mean(mat_nn_pgs_f.A_s2) - 3.7, sd(mat_nn_pgs_f.A_s2), mean((mat_nn_pgs_f.A_s2 - 3.7)^2),
-  mean(mat_lin_fpgs_t.A_s2) - 3.7, sd(mat_lin_fpgs_t.A_s2), mean((mat_lin_fpgs_t.A_s2 - 3.7)^2),
-  mean(mat_lin_fpgs_f.A_s2) - 3.7, sd(mat_lin_fpgs_f.A_s2), mean((mat_lin_fpgs_f.A_s2 - 3.7)^2), 
-  mean(mat_nn_fpgs_t.A_s2) - 3.7, sd(mat_nn_fpgs_t.A_s2), mean((mat_nn_fpgs_t.A_s2 - 3.7)^2),
-  mean(mat_nn_fpgs_f.A_s2) - 3.7, sd(mat_nn_fpgs_f.A_s2), mean((mat_nn_fpgs_f.A_s2 - 3.7)^2)),
+  mean(mat_lin_pgs_t.A_s2) - 2.6, sd(mat_lin_pgs_t.A_s2), mean((mat_lin_pgs_t.A_s2 - 2.6)^2),
+  mean(mat_lin_pgs_f.A_s2) - 2.6, sd(mat_lin_pgs_f.A_s2), mean((mat_lin_pgs_f.A_s2 - 2.6)^2), 
+  mean(mat_nn_pgs_t.A_s2) - 2.6, sd(mat_nn_pgs_t.A_s2), mean((mat_nn_pgs_t.A_s2 - 2.6)^2),
+  mean(mat_nn_pgs_f.A_s2) - 2.6, sd(mat_nn_pgs_f.A_s2), mean((mat_nn_pgs_f.A_s2 - 2.6)^2),
+  mean(mat_lin_fpgs_t.A_s2) - 2.6, sd(mat_lin_fpgs_t.A_s2), mean((mat_lin_fpgs_t.A_s2 - 2.6)^2),
+  mean(mat_lin_fpgs_f.A_s2) - 2.6, sd(mat_lin_fpgs_f.A_s2), mean((mat_lin_fpgs_f.A_s2 - 2.6)^2), 
+  mean(mat_nn_fpgs_t.A_s2) - 2.6, sd(mat_nn_fpgs_t.A_s2), mean((mat_nn_fpgs_t.A_s2 - 2.6)^2),
+  mean(mat_nn_fpgs_f.A_s2) - 2.6, sd(mat_nn_fpgs_f.A_s2), mean((mat_nn_fpgs_f.A_s2 - 2.6)^2)),
   digits = 3
 )
 
 MAT.B_s2 <- round(cbind(
-  mean(mat_lin_pgs_t.B_s2) - 3.7, sd(mat_lin_pgs_t.B_s2), mean((mat_lin_pgs_t.B_s2 - 3.7)^2),
-  mean(mat_lin_pgs_f.B_s2) - 3.7, sd(mat_lin_pgs_f.B_s2), mean((mat_lin_pgs_f.B_s2 - 3.7)^2), 
-  mean(mat_nn_pgs_t.B_s2) - 3.7, sd(mat_nn_pgs_t.B_s2), mean((mat_nn_pgs_t.B_s2 - 3.7)^2),
-  mean(mat_nn_pgs_f.B_s2) - 3.7, sd(mat_nn_pgs_f.B_s2), mean((mat_nn_pgs_f.B_s2 - 3.7)^2),
-  mean(mat_lin_fpgs_t.B_s2) - 3.7, sd(mat_lin_fpgs_t.B_s2), mean((mat_lin_fpgs_t.B_s2 - 3.7)^2),
-  mean(mat_lin_fpgs_f.B_s2) - 3.7, sd(mat_lin_fpgs_f.B_s2), mean((mat_lin_fpgs_f.B_s2 - 3.7)^2), 
-  mean(mat_nn_fpgs_t.B_s2) - 3.7, sd(mat_nn_fpgs_t.B_s2), mean((mat_nn_fpgs_t.B_s2 - 3.7)^2),
-  mean(mat_nn_fpgs_f.B_s2) - 3.7, sd(mat_nn_fpgs_f.B_s2), mean((mat_nn_fpgs_f.B_s2 - 3.7)^2)),
+  mean(mat_lin_pgs_t.B_s2) - 2.6, sd(mat_lin_pgs_t.B_s2), mean((mat_lin_pgs_t.B_s2 - 2.6)^2),
+  mean(mat_lin_pgs_f.B_s2) - 2.6, sd(mat_lin_pgs_f.B_s2), mean((mat_lin_pgs_f.B_s2 - 2.6)^2), 
+  mean(mat_nn_pgs_t.B_s2) - 2.6, sd(mat_nn_pgs_t.B_s2), mean((mat_nn_pgs_t.B_s2 - 2.6)^2),
+  mean(mat_nn_pgs_f.B_s2) - 2.6, sd(mat_nn_pgs_f.B_s2), mean((mat_nn_pgs_f.B_s2 - 2.6)^2),
+  mean(mat_lin_fpgs_t.B_s2) - 2.6, sd(mat_lin_fpgs_t.B_s2), mean((mat_lin_fpgs_t.B_s2 - 2.6)^2),
+  mean(mat_lin_fpgs_f.B_s2) - 2.6, sd(mat_lin_fpgs_f.B_s2), mean((mat_lin_fpgs_f.B_s2 - 2.6)^2), 
+  mean(mat_nn_fpgs_t.B_s2) - 2.6, sd(mat_nn_fpgs_t.B_s2), mean((mat_nn_fpgs_t.B_s2 - 2.6)^2),
+  mean(mat_nn_fpgs_f.B_s2) - 2.6, sd(mat_nn_fpgs_f.B_s2), mean((mat_nn_fpgs_f.B_s2 - 2.6)^2)),
   digits = 3
 )
 
 MAT.C_s2 <- round(cbind(
-  mean(mat_lin_pgs_t.C_s2) - 3.7, sd(mat_lin_pgs_t.C_s2), mean((mat_lin_pgs_t.C_s2 - 3.7)^2),
-  mean(mat_lin_pgs_f.C_s2) - 3.7, sd(mat_lin_pgs_f.C_s2), mean((mat_lin_pgs_f.C_s2 - 3.7)^2), 
-  mean(mat_nn_pgs_t.C_s2) - 3.7, sd(mat_nn_pgs_t.C_s2), mean((mat_nn_pgs_t.C_s2 - 3.7)^2),
-  mean(mat_nn_pgs_f.C_s2) - 3.7, sd(mat_nn_pgs_f.C_s2), mean((mat_nn_pgs_f.C_s2 - 3.7)^2),
-  mean(mat_lin_fpgs_t.C_s2) - 3.7, sd(mat_lin_fpgs_t.C_s2), mean((mat_lin_fpgs_t.C_s2 - 3.7)^2),
-  mean(mat_lin_fpgs_f.C_s2) - 3.7, sd(mat_lin_fpgs_f.C_s2), mean((mat_lin_fpgs_f.C_s2 - 3.7)^2), 
-  mean(mat_nn_fpgs_t.C_s2) - 3.7, sd(mat_nn_fpgs_t.C_s2), mean((mat_nn_fpgs_t.C_s2 - 3.7)^2),
-  mean(mat_nn_fpgs_f.C_s2) - 3.7, sd(mat_nn_fpgs_f.C_s2), mean((mat_nn_fpgs_f.C_s2 - 3.7)^2)),
+  mean(mat_lin_pgs_t.C_s2) - 2.6, sd(mat_lin_pgs_t.C_s2), mean((mat_lin_pgs_t.C_s2 - 2.6)^2),
+  mean(mat_lin_pgs_f.C_s2) - 2.6, sd(mat_lin_pgs_f.C_s2), mean((mat_lin_pgs_f.C_s2 - 2.6)^2), 
+  mean(mat_nn_pgs_t.C_s2) - 2.6, sd(mat_nn_pgs_t.C_s2), mean((mat_nn_pgs_t.C_s2 - 2.6)^2),
+  mean(mat_nn_pgs_f.C_s2) - 2.6, sd(mat_nn_pgs_f.C_s2), mean((mat_nn_pgs_f.C_s2 - 2.6)^2),
+  mean(mat_lin_fpgs_t.C_s2) - 2.6, sd(mat_lin_fpgs_t.C_s2), mean((mat_lin_fpgs_t.C_s2 - 2.6)^2),
+  mean(mat_lin_fpgs_f.C_s2) - 2.6, sd(mat_lin_fpgs_f.C_s2), mean((mat_lin_fpgs_f.C_s2 - 2.6)^2), 
+  mean(mat_nn_fpgs_t.C_s2) - 2.6, sd(mat_nn_fpgs_t.C_s2), mean((mat_nn_fpgs_t.C_s2 - 2.6)^2),
+  mean(mat_nn_fpgs_f.C_s2) - 2.6, sd(mat_nn_fpgs_f.C_s2), mean((mat_nn_fpgs_f.C_s2 - 2.6)^2)),
   digits = 3
 )
