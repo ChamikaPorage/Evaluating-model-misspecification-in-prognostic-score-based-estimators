@@ -1,8 +1,10 @@
-########################
-# Simulation 2: DESIGN A 
-########################
+################
+# Simulation 2
+#DESIGN A 
+################
 #contains function with argument N= sample size and seed,  
 #generating 1000 data sets with Design A in Simulation 2
+
 
 library(caret)
 library(ranger)
@@ -31,10 +33,9 @@ gen.data.A2 <- function(N, seed){
     dp <- 1
     ep <- 0.2
     fp <- 0.3
-    gp <- - 0.65
-    hp <- 0.15
     
-    prob <- exp(ap + bp * x1 + cp * x2 + dp * x3 + ep * x12 + fp * x22 + gp * e1 + hp * e2)/(1 + exp(ap + bp * x1 + cp * x2 + dp * x3 + ep * x12 + fp * x22 + gp * e1 + hp * e2))
+    
+    prob <- exp(ap + bp * x1 + cp * x2 + dp * x3 + ep * x12 + fp * x22)/(1 + exp(ap + bp * x1 + cp * x2 + dp * x3 + ep * x12 + fp * x22 ))
     
     tr <- rbinom(N, 1, prob)
     
@@ -50,35 +51,35 @@ gen.data.A2 <- function(N, seed){
     h <- -0.8
     l <- 0.9
     m <- 0.4
-    n <- 2
+    n <- 0.8
     
     eps1 <- rnorm(N)
     eps0 <- rnorm(N)
-    y1 <- 1.5 + f * x1 + g * x3 + h * x4 + l * x12 + m * x32 + n* e1 + e2 + eps1
-    y0 <- a * x1 + b * x3 + c * x4 + d * x12 + e * x32  + eps0
+    y1 <- 1.5 + f * x1 + g * x3 + h * x4 + l * x12 + m * x32 + n* e1 + eps1
+    y0 <- a * x1 + b * x3 + c * x4 + d * x12 + e * x32 + eps0
     y  <- ifelse(tr == 1, y1, y0)
     
     
-    datat <- as.data.frame(cbind(x1, x2, x3, x4, x12, x22, x32, tr,e1,e2, y0, y1, y))
-    colnames(datat) <- c("x1", "x2", "x3", "x4", "x12", "x22", "x32", "tr", "e1", "e2" ,"y0", "y1", "y")
+    datat <- as.data.frame(cbind(x1, x2, x3, x4, x12, x22, x32, tr,e1, y0, y1, y))
+    colnames(datat) <- c("x1", "x2", "x3", "x4", "x12", "x22", "x32", "tr", "e1","y0", "y1", "y")
     
-    # OR Models
+    # OR MODELS
     
     datat0 <- subset(datat, datat$tr==0)
     datat1 <- subset(datat, datat$tr==1)
     
-    #True OR
-    mod0 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2, data=datat0)
+    #TRUE OR
+    mod0 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1, data=datat0)
     mu0 <- predict(mod0, newdata = datat, type = "response")
     
-    mod1 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2 , data = datat1)
+    mod1 <- lm(y ~ x1 + x3 + x4 + x12 + x32 + e1, data = datat1)
     mu1 <- predict(mod1, newdata = datat, type = "response")
     
-    # False OR
-    mod0f <- lm(y ~ x1 + x3 + x4 + e1 + e2 , data = datat0)
+    # FALSE OR
+    mod0f <- lm(y ~ x1 + x3 + x4, data = datat0)
     mu0f <- predict(mod0f, newdata = datat, type = "response")
     
-    mod1f <- lm(y ~ x1 + x3 + x4 + e1 + e2 , data = datat1)
+    mod1f <- lm(y ~ x1 + x3 + x4, data = datat1)
     mu1f <- predict(mod1f, newdata = datat, type = "response")
     
     ###Non-linear model
@@ -101,22 +102,22 @@ gen.data.A2 <- function(N, seed){
       #True non-linear model
       
       # Train random forest on untreated (Tr == 0)
-      model_rf_0 <- ranger(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2, data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
-      murf0[valid_idx] <- predict(model_rf_0, data = valid_data[, c("x1","x3", "x4", "x12", "x32", "e1", "e2")])$predictions
+      model_rf_0 <- ranger(y ~ x1 + x3 + x4 + x12 + x32 + e1, data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
+      murf0[valid_idx] <- predict(model_rf_0, data = valid_data[, c("x1","x3", "x4", "x12", "x32", "e1")])$predictions
       
       # Train random forest on treated (Tr == 1)
-      model_rf_1 <- ranger(y ~ x1 + x3 + x4 + x12 + x32 + e1 + e2, data = data1_train, num.trees = 300, mtry = 2, min.node.size = 5)
-      murf1[valid_idx] <- predict(model_rf_1, data = valid_data[, c("x1","x3", "x4", "x12", "x32", "e1", "e2")])$predictions
+      model_rf_1 <- ranger(y ~ x1 + x3 + x4 + x12 + x32 + e1, data = data1_train, num.trees = 300, mtry = 2, min.node.size = 5)
+      murf1[valid_idx] <- predict(model_rf_1, data = valid_data[, c("x1","x3", "x4", "x12", "x32", "e1")])$predictions
       
       #Fasle non-linear model
       
       # Train random forest on untreated (Tr == 0)
-      mod_rf_0 <- ranger(y ~ x1  + x2 + x4 + e1 + e2, data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
-      murf0_f[valid_idx] <- predict(mod_rf_0, data = valid_data[, c("x1", "x2", "x4", "e1", "e2")])$predictions
+      mod_rf_0 <- ranger(y ~ x1  + x2 + x4, data = data0_train, num.trees = 300, mtry = 2, min.node.size = 5)
+      murf0_f[valid_idx] <- predict(mod_rf_0, data = valid_data[, c("x1", "x2", "x4", "e1")])$predictions
       
       # Train random forest on treated (Tr == 1)
-      mod_rf_1 <- ranger(y ~ x1  + x2 + x4 + e1 + e2, data = data1_train, num.trees = 300, mtry = 2, min.node.size = 5)
-      murf1_f[valid_idx] <- predict(mod_rf_1, data = valid_data[, c("x1", "x2", "x4", "e1", "e2")])$predictions
+      mod_rf_1 <- ranger(y ~ x1  + x2 + x4, data = data1_train, num.trees = 300, mtry = 2, min.node.size = 5)
+      murf1_f[valid_idx] <- predict(mod_rf_1, data = valid_data[, c("x1", "x2", "x4", "e1")])$predictions
       
     }
     
@@ -125,4 +126,3 @@ gen.data.A2 <- function(N, seed){
   }
   return(datat2)
 }
-  
